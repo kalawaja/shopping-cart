@@ -5,33 +5,15 @@ const total = document.querySelector("#total");
 let totalAmount = 0;
 
 products.addEventListener("dragstart", dragStart);
-cartItems.addEventListener("dragstart", dragStart);
-cartItems.addEventListener("dragend", dragEnd);
 cartItems.addEventListener("dragover", dragOver);
-cartItems.addEventListener("dragenter", dragEnter);
-cartItems.addEventListener("dragleave", dragLeave);
 cartItems.addEventListener("drop", dragDrop);
 
 function dragStart(e) {
   e.dataTransfer.setData("text", e.target.innerHTML);
 }
 
-function dragEnd(e) {
-  const items = document.querySelectorAll(".cart-item");
-  items.forEach((item) => item.classList.remove("dragging"));
-}
-
 function dragOver(e) {
   e.preventDefault();
-}
-
-function dragEnter(e) {
-  e.preventDefault();
-  e.target.classList.add("dragging");
-}
-
-function dragLeave(e) {
-  e.target.classList.remove("dragging");
 }
 
 function dragDrop(e) {
