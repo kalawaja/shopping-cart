@@ -37,25 +37,25 @@ function dragLeave(e) {
 function dragDrop(e) {
   const data = e.dataTransfer.getData("text");
   if (e.target.classList.contains("cart-item")) {
-    totalAmount += parseFloat(data.split(" ")[1]);
+    totalAmount += parseFloat(data);
   } else if (e.target.id === "cart-items") {
     const div = document.createElement("div");
     div.classList.add("cart-item");
     div.innerHTML = data;
     const removeButton = document.createElement("button");
-    removeButton.innerHTML = "Sepetten Çıkar";
+    removeButton.innerHTML = "Delete";
     removeButton.addEventListener("click", removeItem);
     div.appendChild(removeButton);
     e.target.appendChild(div);
-    totalAmount += parseFloat(data.split(" ")[1]);
+    totalAmount += parseFloat(data);
   }
-  total.innerHTML = `Toplam Tutar: ${totalAmount}`;
+  total.innerHTML = `Total Amount: ${totalAmount}`;
 }
 
 function removeItem(e) {
   const item = e.target.parentElement;
-  const price = parseFloat(item.innerHTML.split(" ")[1]);
+  const price = parseFloat(item.innerHTML);
   totalAmount -= price;
-  total.innerHTML = `Toplam Tutar: ${totalAmount}`;
+  total.innerHTML = `Total Amount: ${totalAmount}`;
   item.remove();
 }
