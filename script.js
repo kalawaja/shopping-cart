@@ -18,9 +18,7 @@ function dragOver(e) {
 
 function dragDrop(e) {
   const data = e.dataTransfer.getData("text");
-  if (e.target.classList.contains("cart-item")) {
-    totalAmount += parseFloat(data);
-  } else if (e.target.id === "cart-items") {
+  if (e.target.id === "cart-items") {
     const div = document.createElement("div");
     div.classList.add("cart-item");
     div.innerHTML = data;
